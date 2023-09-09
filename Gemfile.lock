@@ -196,7 +196,7 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
-    rubocop-rails (2.20.2)
+    rubocop-rails (2.21.0)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
@@ -256,7 +256,7 @@ DEPENDENCIES
   rails (~> 7.0.7, >= 7.0.7.2)
   redis (~> 4.0)
   rubocop (~> 1.56, >= 1.56.2)
-  rubocop-rails
+  rubocop-rails (~> 2.21)
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
