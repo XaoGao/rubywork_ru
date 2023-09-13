@@ -35,7 +35,7 @@ Everyone is encouraged to help improve this project. Here are a few ways you can
  - Wait until you get an answer: "Ok"
  - After create a new branch "issue_x" where x is the issue number
  - When you complte the task, push the branch to github
- - Crete a new Pull Request
+ - Create a new Pull Request
  - In comment tag me and write "Complite, check PR"
  
 ## Another opensource project where you can help
