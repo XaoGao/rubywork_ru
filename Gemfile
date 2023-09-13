@@ -3,8 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 
-gem "annotate", "~> 3.2"
 gem "bootsnap", require: false
+gem "devise", "~> 4.9", ">= 4.9.2"
+gem "devise-i18n"
 gem "importmap-rails"
 gem "jbuilder"
 gem "puma", "~> 5.0"
@@ -16,13 +17,8 @@ gem "stimulus-rails"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
-
-# For auth we will use devise gem
-gem 'devise', '~> 4.9', '>= 4.9.2'
-
-gem 'devise-i18n'
-
 group :development, :test do
+  gem "annotate", "~> 3.2"
   gem "debug", platforms: %i[mri mingw x64_mingw]
 end
 
