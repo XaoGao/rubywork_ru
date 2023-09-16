@@ -25,6 +25,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "better_errors", "~> 2.10", ">= 2.10.1"
   gem "rubocop", "~> 1.56", ">= 1.56.2"
   gem "rubocop-rails", "~> 2.21"
   gem "rubocop-rspec", "~> 2.24"
