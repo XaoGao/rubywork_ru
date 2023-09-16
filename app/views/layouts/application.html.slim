@@ -4,10 +4,13 @@ html
     title
       = content_for?(:title) ? yield(:title) : "RubyWork"
     meta[name="viewport" content="width=device-width,initial-scale=1"]
+    script[src="https://kit.fontawesome.com/ecb049080c.js" crossorigin="anonymous"]
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   body
     .container
+      = render partial: "layouts/header"
       = yield
+      = render partial: "layouts/footer"
