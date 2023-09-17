@@ -10,4 +10,6 @@ html
     = javascript_importmap_tags
   body
     .container
+      = render partial: "layouts/header"
       = yield
+      = render partial: "layouts/footer"

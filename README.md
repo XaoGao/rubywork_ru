@@ -34,8 +34,9 @@ Everyone is encouraged to help improve this project. Here are a few ways you can
  - Select issue and write int the comment: "I want to take the issue"
  - Wait until you get an answer: "Ok"
  - After create a new branch "issue_x" where x is the issue number
- - When you complte the task, push the branch to github
+ - When you complite the task, push the branch to github
  - Create a new Pull Request
+ - Github Action automatically run tests and linter. Make sure all checks are successful
  - In comment tag me and write "Complite, check PR"
  
 ## Another opensource project where you can help
