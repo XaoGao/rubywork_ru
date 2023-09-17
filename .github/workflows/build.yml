@@ -6,6 +6,20 @@ on:
     branches: [ "main" ]
 
 jobs:
+  backend-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+      - name: Run tests
+        run: bundle exec rspec
+
   backend-lint:
     runs-on: ubuntu-latest
     steps:
