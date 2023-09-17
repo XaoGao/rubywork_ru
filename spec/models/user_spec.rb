@@ -11,9 +11,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
-class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+require "rails_helper"
 
-  has_many :vacancies, dependent: :destroy
+RSpec.describe User, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

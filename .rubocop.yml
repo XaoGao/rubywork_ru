@@ -18,5 +18,12 @@ Style/StringLiterals:
 Rails/FilePath:
   EnforcedStyle: arguments
 
+Rails/Rspec/InferredSpecType:
+  Enabled: false
+
+Layouts/LineLength:
+  Exclude:
+    - "config/initializers/devise.rb"
+
 Metrics/BlockLength:
   AllowedMethods: ['describe', 'context']
