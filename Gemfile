@@ -37,5 +37,6 @@ group :test do
   gem "rspec", "~> 3.12"
   gem "rspec-rails", "~> 6.0", ">= 6.0.3"
   gem "selenium-webdriver"
+  gem "simplecov", "~> 0.21.2"
   gem "webdrivers"
 end
