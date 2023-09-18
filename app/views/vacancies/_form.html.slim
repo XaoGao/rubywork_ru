@@ -1,0 +1,9 @@
+= form_with(model: vacancy, data: { turbo: false }, class: 'form-width-avg') do |form|
+  div.form-group.row.mb-15
+    = form.label :title
+    = form.text_field :title, class: 'form-control'
+  div.form-group.row.mb-15
+    = form.label :body
+    = form.text_area :body, rows: "20", class: 'form-control'
+  div.form-group.mt-10
+    = form.submit text, class: 'btn btn-outline-success'
