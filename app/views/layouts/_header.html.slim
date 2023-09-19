@@ -8,7 +8,14 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
           = link_to "Home", root_path, class: "nav-link fs-4 text-black"
-      form.d-flex[role="search"]
-        input.form-control.me-2[type="search" placeholder="Search" aria-label="Search"]
-        button.btn.btn-outline-success[type="submit"]
-          | Search
+      ul.navbar-nav.ms-3
+        li.nav-item.dropdown
+          - if user_signed_in?
+            = link_to current_user.email, "#", class: "dropdown-toggle btn btn-outline-primary", id: "navbarDropdown", role: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"
+            .dropdown-menu[aria-labelledby="navbarDropdown"]
+              = link_to "Edit profile", edit_user_registration_path, class: "dropdown-item"
+              .li.hr.dropdown-divider
+              = link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item"
+          - else
+            = link_to "Sign in", new_user_session_path, class: "btn link-primary"
+            = link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary"
