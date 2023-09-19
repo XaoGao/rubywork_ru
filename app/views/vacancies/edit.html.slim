@@ -1,8 +1,8 @@
 - if @vacancy.errors.any?
-  div
+  .
     h2 Errors
     ul
       - @vacancy.errors.each do |error|
         li = error.full_message
 
-= render partial: 'form', locals: { vacancy: @vacancy, text: 'Edit vacancy' }
+= render partial: "form", locals: { vacancy: @vacancy, text: "Edit vacancy" }
