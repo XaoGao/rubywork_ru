@@ -8,5 +8,5 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
           = link_to "Home", root_path, class: "nav-link fs-4 text-black"
-      button.btn.btn-outline-success[type="submit" href="#"]  
-        | Sign in
+      = link_to "Sign in", new_user_session_path, class: "btn btn-outline-success type='submit'"   
+     
