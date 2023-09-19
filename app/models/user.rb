@@ -16,4 +16,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :vacancies, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 end
