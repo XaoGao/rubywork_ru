@@ -1,4 +1,14 @@
-require 'rails_helper'
+# == Schema Information
+#
+# Table name: contacts
+#
+#  id              :integer          not null, primary key
+#  user_id         :integer          not null
+#  contact_type_id :integer          not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+require1 "rails_helper"
 
 RSpec.describe Contact, type: :model do
   pending "add some examples to (or delete) #{__FILE__}"
