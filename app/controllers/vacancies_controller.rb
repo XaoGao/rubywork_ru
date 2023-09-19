@@ -1,6 +1,4 @@
 class VacanciesController < ApplicationController
-  before_action :set_user
-
   def index
     @vacancies = Vacancy.all
   end
@@ -18,7 +16,7 @@ class VacanciesController < ApplicationController
   end
 
   def create
-    @vacancy = @user.vacancies.build(vacancy_params)
+    @vacancy = current_user.vacancies.build(vacancy_params)
 
     if @vacancy.save
       redirect_to vacancy_path(@vacancy)
@@ -48,9 +46,5 @@ class VacanciesController < ApplicationController
 
   def vacancy_params
     params.require(:vacancy).permit(:title, :body)
-  end
-
-  def set_user
-    @user = User.find(current_user.id)
   end
 end
