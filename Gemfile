@@ -22,11 +22,14 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem "annotate", "~> 3.2"
   gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "factory_bot_rails", "~> 6.2"
+  gem "faker", "~> 3.2", ">= 3.2.1"
 end
 
 group :development do
   gem "better_errors", "~> 2.10", ">= 2.10.1"
   gem "rubocop", "~> 1.56", ">= 1.56.2"
+  gem "rubocop-factory_bot", "~> 2.24"
   gem "rubocop-rails", "~> 2.21"
   gem "rubocop-rspec", "~> 2.24"
   gem "web-console"
@@ -34,6 +37,7 @@ end
 
 group :test do
   gem "capybara"
+  gem "database_cleaner", "~> 2.0", ">= 2.0.2"
   gem "rspec", "~> 3.12"
   gem "rspec-rails", "~> 6.0", ">= 6.0.3"
   gem "selenium-webdriver"
