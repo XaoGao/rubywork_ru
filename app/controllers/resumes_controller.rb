@@ -1,29 +1,29 @@
 class ResumesController < ApplicationController
-  def new
-    @resume = Resume.new
-  end
-
-  def create
-    @resume = current_user.resumes.build(resume_params)
-    if @resume.save?
-      redirect_to @resume, notice: 'Resume successfully created'
-    else
-      render :new, alert: resume.errors.full_messages.join(' ')
-    end
-  end
-
   def show
     @resume = Resume.find(params[:id])
+  end
+
+  def new
+    @resume = Resume.new
   end
 
   def edit
     @resume = Resume.find(params[:id])
   end
 
+  def create
+    @resume = current_user.resumes.build(resume_params)
+    if @resume.save?
+      redirect_to @resume, notice: t(".created")
+    else
+      render :new, alert: resume.errors.full_messages.join(' ')
+    end
+  end
+
   def update
     @resume = Resume.find(params[:id])
     if @resume.update(resume_params)
-      redirect_to @resume, notice: 'Resume was successfully updated'
+      redirect_to @resume, notice: t(".updated")
     else
       render :edit, alert: @resume.errors.full_messages.join(' ')
     end
@@ -32,7 +32,7 @@ class ResumesController < ApplicationController
   def destroy
     @resume = Resume.find(params[:id])
     @resume.destroy
-    redirect_to root_path, notice: 'Resume was successfully deleted'
+    redirect_to root_path, notice: t(".deleted")
   end
 
   private
