@@ -9,7 +9,6 @@
 #  updated_at :datetime         not null
 #
 class ContactType < ApplicationRecord
-
   has_many :contacts, dependent: :destroy
 
   validates :name, :icon, presence: true
