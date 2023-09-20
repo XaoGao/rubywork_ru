@@ -12,12 +12,10 @@
 #  updated_at             :datetime         not null
 #  role                   :integer          default("applicant")
 #
-class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
-  has_many :vacancies, dependent: :destroy
-  has_many :contacts, dependent: :destroy
-
-  enum :role, %i[applicant company moderator admin]
+FactoryBot.define do
+  factory :user do
+    email { Faker::Internet.email }
+    password { "password" }
+    role { User.roles.keys.sample }
+  end
 end
