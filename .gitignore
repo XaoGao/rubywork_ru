@@ -36,3 +36,6 @@
 
 # Ignore code coverage report
 /coverage
+
+# Ignore the environment variables
+.env
