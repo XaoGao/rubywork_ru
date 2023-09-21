@@ -22,7 +22,7 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem "annotate", "~> 3.2"
   gem "debug", platforms: %i[mri mingw x64_mingw]
-  gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+  gem "dotenv-rails", "~> 2.8", ">= 2.8.1"
   gem "factory_bot_rails", "~> 6.2"
   gem "faker", "~> 3.2", ">= 3.2.1"
 end
