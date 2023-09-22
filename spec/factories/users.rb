@@ -11,10 +11,12 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :integer          default("applicant")
+#  name                   :string
 #
 FactoryBot.define do
   factory :user do
     email { Faker::Internet.email }
+    name { Faker::Name.name }
     password { "password" }
     role { User.roles.keys.sample }
   end

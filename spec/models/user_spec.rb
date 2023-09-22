@@ -11,6 +11,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  role                   :integer          default("applicant")
+#  name                   :string
 #
 require "rails_helper"
 
