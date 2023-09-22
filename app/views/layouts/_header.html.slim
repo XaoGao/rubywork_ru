@@ -11,7 +11,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
       ul.navbar-nav.ms-3
         li.nav-item.dropdown
           - if user_signed_in?
-            = link_to current_user.email, "#", class: "dropdown-toggle btn btn-outline-primary", id: "navbarDropdown", role: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"
+            = link_to current_user.name? ? current_user.name : current_user.email, "#", class: "dropdown-toggle btn btn-outline-primary", id: "navbarDropdown", role: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"
             .dropdown-menu[aria-labelledby="navbarDropdown"]
               = link_to "Edit profile", edit_user_registration_path, class: "dropdown-item"
               .li.hr.dropdown-divider
