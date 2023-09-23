@@ -25,6 +25,15 @@ RSpec/Rails/InferredSpecType:
 Layout/LineLength:
   Exclude:
     - "config/initializers/devise.rb"
+    - "db/migrate/*.rb"
 
 Metrics/BlockLength:
   AllowedMethods: ['describe', 'context']
+
+Metrics/MethodLength:
+  Exclude:
+    - "db/migrate/*.rb"
+
+Metrics/AbcSize:
+  Exclude:
+    - "db/migrate/*.rb"
