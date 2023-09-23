@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   root "pages#welcome"
   resources :resumes
+  resources :vacancies
 end

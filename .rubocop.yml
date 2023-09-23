@@ -1,6 +1,7 @@
 require:
   - "rubocop-rails"
   - "rubocop-rspec"
+  - "rubocop-factory_bot"
 
 AllCops:
   NewCops: enable
@@ -18,10 +19,10 @@ Style/StringLiterals:
 Rails/FilePath:
   EnforcedStyle: arguments
 
-Rails/Rspec/InferredSpecType:
+RSpec/Rails/InferredSpecType:
   Enabled: false
 
-Layouts/LineLength:
+Layout/LineLength:
   Exclude:
     - "config/initializers/devise.rb"
 
