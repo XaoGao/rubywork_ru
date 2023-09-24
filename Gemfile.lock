@@ -222,6 +222,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    ransack (4.0.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rdoc (6.5.0)
       psych (>= 4.0.0)
     redis (4.8.1)
@@ -370,6 +374,7 @@ DEPENDENCIES
   jbuilder
   puma (~> 5.0)
   rails (~> 7.0.7, >= 7.0.7.2)
+  ransack (~> 4.0.0)
   redis (~> 4.0)
   rspec (~> 3.12)
   rspec-rails (~> 6.0, >= 6.0.3)
