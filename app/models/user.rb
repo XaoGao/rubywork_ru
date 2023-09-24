@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
   has_many :vacancies, dependent: :destroy
   has_many :contacts, dependent: :destroy
+  has_many :notifications
 
   enum :role, %i[applicant company moderator admin]
 end

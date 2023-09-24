@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_22_161530) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_24_062545) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -65,6 +65,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_161530) do
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "recipient_id", null: false
+    t.text "body"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  end
+
   create_table "resumes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -99,6 +110,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_22_161530) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "contacts", "contact_types"
   add_foreign_key "contacts", "users"
+  add_foreign_key "notifications", "users", column: "recipient_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "resumes", "users"
   add_foreign_key "vacancies", "users"
 end
