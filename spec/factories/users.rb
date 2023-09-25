@@ -20,4 +20,12 @@ FactoryBot.define do
     password { "password" }
     role { User.roles.keys.sample }
   end
+
+  trait :admin do
+    role { "admin" }
+  end
+
+  trait :skip_admin_role do
+    role { User.roles.keys.reject { |key| key == "admin" }.sample }
+  end
 end

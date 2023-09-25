@@ -1,16 +1,15 @@
-# Base class for application policies
 class ApplicationPolicy < ActionPolicy::Base
-  # Configure additional authorization contexts here
-  # (`user` is added by default).
-  #
-  #   authorize :account, optional: true
-  #
-  # Read more about authorization context: https://actionpolicy.evilmartians.io/#/authorization_context
+  def allow_record
+    allow! if current_admin? || owner_record?
+  end
 
-  # Define shared methods useful for most policies.
-  # For example:
-  #
-  #  def owner?
-  #    record.user_id == user.id
-  #  end
+  private
+
+  def current_admin?
+    user.admin?
+  end
+
+  def owner_record?
+    user.id == record.user_id
+  end
 end

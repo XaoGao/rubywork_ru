@@ -1,4 +1,7 @@
 class VacanciesController < ApplicationController
+  before_action :load_vacancy, only: %i[edit update destroy]
+  verify_authorized only: %i[edit update destroy]
+
   def index
     @vacancies = Vacancy.all
   end
@@ -11,9 +14,7 @@ class VacanciesController < ApplicationController
     @vacancy = Vacancy.new
   end
 
-  def edit
-    @vacancy = Vacancy.find(params[:id])
-  end
+  def edit; end
 
   def create
     @vacancy = current_user.vacancies.build(vacancy_params)
@@ -26,8 +27,6 @@ class VacanciesController < ApplicationController
   end
 
   def update
-    @vacancy = Vacancy.find(params[:id])
-
     if @vacancy.update(vacancy_params)
       redirect_to vacancy_path(@vacancy)
     else
@@ -36,13 +35,16 @@ class VacanciesController < ApplicationController
   end
 
   def destroy
-    @vacancy = Vacancy.find(params[:id])
     @vacancy.destroy
-
     redirect_to vacancies_path
   end
 
   private
+
+  def load_vacancy
+    @vacancy = Vacancy.find(params[:id])
+    authorize!(@vacancy)
+  end
 
   def vacancy_params
     params.require(:vacancy).permit(:title, :body)
