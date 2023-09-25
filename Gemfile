@@ -8,6 +8,7 @@ gem "bootsnap", require: false
 gem "bootstrap", "~> 5.1.3"
 gem "devise", "~> 4.9", ">= 4.9.2"
 gem "devise-i18n"
+gem "image_processing", ">= 1.2"
 gem "importmap-rails"
 gem "jbuilder"
 gem "puma", "~> 5.0"
