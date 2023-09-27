@@ -11,7 +11,7 @@ gem "devise-i18n"
 gem "image_processing", ">= 1.2"
 gem "importmap-rails"
 gem "jbuilder"
-gem 'kaminari', '~> 1.2', '>= 1.2.2'
+gem "kaminari", "~> 1.2", ">= 1.2.2"
 gem "puma", "~> 5.0"
 gem "rails", "~> 7.0.7", ">= 7.0.7.2"
 gem "ransack", "~> 4.0.0"
