@@ -18,4 +18,6 @@
 class Resume < ApplicationRecord
   belongs_to :user
   has_rich_text :description
+
+  enum :status, %i[open hidden irrelevant]
 end
