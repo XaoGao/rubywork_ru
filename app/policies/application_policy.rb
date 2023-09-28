@@ -1,6 +1,6 @@
 class ApplicationPolicy < ActionPolicy::Base
   def allow_record
-    allow! if current_admin? || owner_record?
+    current_admin? || owner_record?
   end
 
   private

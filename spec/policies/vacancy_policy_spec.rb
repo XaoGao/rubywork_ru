@@ -1,35 +1,20 @@
 require "rails_helper"
 
-RSpec.describe VacancyPolicy, type: :policy do
-  let(:user) { build_stubbed(:user, :skip_admin_role) }
-  let(:vacancy) { build_stubbed(:vacancy, user:) }
+RSpec.describe VacancyPolicy do
+  let(:user)    { build_stubbed(:user, :skip_admin_role) }
+  let(:record)  { build_stubbed(:vacancy, user:) }
+  let(:context) { { user: } }
 
-  let(:policy) { described_class.new(vacancy, user:) }
+  describe_rule :manage? do
+    succeed "when user is owner vacancy"
 
-  describe "#manage?" do
-    subject(:policy_result) { policy.apply(:manage?) }
-
-    let(:rules) { %i[edit? update? destroy?] }
-
-    it "is an alias of :edit, :update, :destroy rules" do
-      expect(rules).to all be_an_alias_of(policy, :manage?)
+    succeed "when user is admin" do
+      let(:user) { build_stubbed(:user, :admin) }
+      let(:record) { build_stubbed(:vacancy) }
     end
 
-    context "when user is owner vacancy" do
-      it { expect(policy_result).to be_present }
-    end
-
-    context "when vacancy doesn`t belong user and he isn`t an admin" do
-      let(:vacancy) { build_stubbed(:vacancy) }
-
-      it { expect(policy_result).not_to be_present }
-    end
-
-    context "when vacancy doesn`t belong user but user is admin" do
-      let(:vacancy) { build_stubbed(:vacancy) }
-      let(:user)    { build_stubbed(:user, :admin) }
-
-      it { expect(policy_result).to be_present }
+    failed "when vacancy doesn`t belong user and he isn`t an admin" do
+      let(:record) { build_stubbed(:vacancy) }
     end
   end
 end
