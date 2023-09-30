@@ -3,9 +3,9 @@
 # Table name: place_of_works
 #
 #  id         :integer          not null, primary key
-#  End        :datetime
-#  Start      :datetime         not null
 #  company    :string           not null
+#  ended_at   :datetime
+#  started_at :datetime         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  resume_id  :integer          not null

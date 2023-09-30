@@ -3,9 +3,9 @@
 # Table name: place_of_works
 #
 #  id         :integer          not null, primary key
-#  End        :datetime
-#  Start      :datetime         not null
 #  company    :string           not null
+#  ended_at   :datetime
+#  started_at :datetime         not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  resume_id  :integer          not null
@@ -20,8 +20,8 @@
 #
 FactoryBot.define do
   factory :place_of_work do
-    Start { "2023-09-26 21:27:30" }
-    End { "2023-09-26 21:27:30" }
+    started_at { "2023-09-26 21:27:30" }
+    ended_at { "2023-09-26 21:27:30" }
     company { "MyString" }
     resume { nil }
   end
