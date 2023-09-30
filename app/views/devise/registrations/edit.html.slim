@@ -2,6 +2,12 @@ h2 Edit #{resource_name.to_s.humanize}
 
 = form_for resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "bg-light rounded border p-3" } do |f|
   = render "devise/shared/error_messages", resource: resource
+  .mb-3
+    p Current avatar
+    = image_tag resource.avatar, height: "200", width: "200", class: "img-thumbnail mb-3" if resource.avatar.attached?
+    br
+    = f.label :avatar, class: "form-label"
+    = f.file_field :avatar, class: "form-control"
 
   .mb-3
     = f.label :email, class: "form-label"

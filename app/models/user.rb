@@ -17,8 +17,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :avatar
+
   has_many :vacancies, dependent: :destroy
   has_many :contacts, dependent: :destroy
+  has_many :sent_notifications, class_name: "Notification",
+                                foreign_key: :sender_id, dependent: :destroy, inverse_of: :sender
+  has_many :received_notifications, class_name: "Notification",
+                                    foreign_key: :recipient_id, dependent: :destroy, inverse_of: :recipient
 
   enum :role, %i[applicant company moderator admin]
 end

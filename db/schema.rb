@@ -75,10 +75,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_045201) do
     t.index ["resume_id"], name: "index_place_of_works_on_resume_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.integer "sender_id", null: false
+    t.integer "recipient_id", null: false
+    t.text "body"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id"], name: "index_notifications_on_recipient_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
+  end
+
   create_table "resumes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
@@ -110,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_045201) do
   add_foreign_key "contacts", "contact_types"
   add_foreign_key "contacts", "users"
   add_foreign_key "place_of_works", "resumes"
+  add_foreign_key "notifications", "users", column: "recipient_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "resumes", "users"
   add_foreign_key "vacancies", "users"
 end
