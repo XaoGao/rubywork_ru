@@ -1,6 +1,7 @@
 class ResumesController < ApplicationController
   def show
     @resume = Resume.find(params[:id])
+    authorize! @resume
   end
 
   def new
