@@ -13,6 +13,7 @@ class VacanciesController < ApplicationController
 
   def edit
     @vacancy = Vacancy.find(params[:id])
+    authorize!(@vacancy)
   end
 
   def create
@@ -27,6 +28,7 @@ class VacanciesController < ApplicationController
 
   def update
     @vacancy = Vacancy.find(params[:id])
+    authorize!(@vacancy)
 
     if @vacancy.update(vacancy_params)
       redirect_to vacancy_path(@vacancy)
@@ -37,8 +39,9 @@ class VacanciesController < ApplicationController
 
   def destroy
     @vacancy = Vacancy.find(params[:id])
-    @vacancy.destroy
+    authorize!(@vacancy)
 
+    @vacancy.destroy
     redirect_to vacancies_path
   end
 
