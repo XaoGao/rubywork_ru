@@ -3,6 +3,9 @@ require:
   - "rubocop-rspec"
   - "rubocop-factory_bot"
 
+inherit_gem:
+  action_policy: config/rubocop-rspec.yml
+
 AllCops:
   NewCops: enable
   TargetRubyVersion: 3.2

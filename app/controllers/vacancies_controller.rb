@@ -1,6 +1,4 @@
 class VacanciesController < ApplicationController
-  verify_authorized only: %i[edit update destroy]
-
   def index
     @vacancies = Vacancy.all
   end
