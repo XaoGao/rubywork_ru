@@ -20,4 +20,6 @@ class Resume < ApplicationRecord
   has_rich_text :description
 
   enum :status, %i[open hidden irrelevant]
+
+  validates :name, presence: true
 end
