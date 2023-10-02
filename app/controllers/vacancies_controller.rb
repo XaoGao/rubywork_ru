@@ -8,7 +8,9 @@ class VacanciesController < ApplicationController
   end
 
   def new
-    @vacancy = Vacancy.new
+    default_values = { title: current_user.name }
+
+    @vacancy = Vacancy.new(default_values)
   end
 
   def edit
