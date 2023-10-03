@@ -12,6 +12,8 @@ RSpec.describe "Vacancies", type: :request do
   end
 
   describe "#new" do
+    before { sign_in user }
+
     it "returns http status success" do
       get new_vacancy_path
       expect(response).to have_http_status(:success)
