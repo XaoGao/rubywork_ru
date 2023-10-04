@@ -16,5 +16,10 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context "locales" do
+    it "defines the default locale is 'eng'" do
+      user = FactoryBot.build(:user)
+      expect(user.locale).to eq("eng")
+    end
+  end
 end

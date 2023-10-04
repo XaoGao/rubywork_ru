@@ -19,6 +19,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     password { "password" }
     role { User.roles.keys.sample }
+    locale { User.locales.keys.sample }
   end
 
   trait :admin do
