@@ -27,5 +27,5 @@ class User < ApplicationRecord
                                     foreign_key: :recipient_id, dependent: :destroy, inverse_of: :recipient
 
   enum :role, %i[applicant company moderator admin]
-  enum :locale, %i[eng ru]
+  enum :locale, %i[en ru]
 end
