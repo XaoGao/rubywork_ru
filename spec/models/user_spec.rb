@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #  role                   :integer          default("applicant")
 #  name                   :string
+#  locale                 :string           default("en")
 #
 require "rails_helper"
 
