@@ -5,7 +5,7 @@ RSpec.describe "Vacancies", type: :request do
   let(:vacancy) { build(:vacancy) }
 
   describe "#index" do
-    it "returns http status success" do
+    it "http status success" do
       get vacancies_path
       expect(response).to have_http_status(:success)
     end
@@ -14,9 +14,19 @@ RSpec.describe "Vacancies", type: :request do
   describe "#new" do
     before { sign_in user }
 
-    it "returns http status success" do
+    it "http status success" do
       get new_vacancy_path
       expect(response).to have_http_status(:success)
+    end
+
+    context "when user is not company role" do
+      let(:user) { build(:user, :individual) }
+
+      it "redirect on root_page" do
+        sign_in user
+        get new_vacancy_path
+        expect(response).to redirect_to(root_path)
+      end
     end
   end
 
@@ -26,7 +36,7 @@ RSpec.describe "Vacancies", type: :request do
     context "when valid params" do
       let(:create_vacancy) { post vacancies_path, params: { vacancy: vacancy.attributes } }
 
-      it "returns http status success" do
+      it "http status success" do
         create_vacancy
         expect(response).to have_http_status(:redirect)
       end
@@ -40,7 +50,7 @@ RSpec.describe "Vacancies", type: :request do
 
     before { sign_in vacancy.user }
 
-    it "returns http status success" do
+    it "http status success" do
       get edit_vacancy_path(vacancy)
       expect(response).to have_http_status(:success)
     end
@@ -51,7 +61,7 @@ RSpec.describe "Vacancies", type: :request do
 
     before { sign_in vacancy.user }
 
-    it "retuns http_status success" do
+    it "http_status success" do
       patch vacancy_path(vacancy), params: { vacancy: vacancy.attributes }
       expect(response).to redirect_to(vacancy_path(vacancy))
     end

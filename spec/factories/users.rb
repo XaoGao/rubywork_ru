@@ -20,4 +20,8 @@ FactoryBot.define do
     password { "password" }
     role { User.roles.keys.sample }
   end
+
+  trait :individual do
+    role { %w[applicant moderator admin].sample }
+  end
 end
