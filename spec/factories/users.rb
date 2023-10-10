@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #  role                   :integer          default("applicant")
 #  name                   :string
+#  locale                 :string           default("en")
 #
 FactoryBot.define do
   factory :user do
@@ -19,6 +20,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     password { "password" }
     role { User.roles.keys.sample }
+    locale { "en" }
   end
 
   trait :admin do
