@@ -1,7 +1,11 @@
 class ResumesController < ApplicationController
+  def index
+    @resumes = Resume.all
+  end
+
   def show
     @resume = Resume.find(params[:id])
-    authorize! @resume
+    authorize! @resume, with: ResumePolicy
   end
 
   def new
