@@ -12,6 +12,7 @@
 #  updated_at             :datetime         not null
 #  role                   :integer          default("applicant")
 #  name                   :string
+#  locale                 :string           default("en")
 #
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
@@ -27,4 +28,6 @@ class User < ApplicationRecord
                                     foreign_key: :recipient_id, dependent: :destroy, inverse_of: :recipient
 
   enum :role, %i[applicant company moderator admin]
+
+  validates :locale, presence: true
 end
