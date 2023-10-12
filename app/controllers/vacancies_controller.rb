@@ -47,6 +47,14 @@ class VacanciesController < ApplicationController
     redirect_to vacancies_path
   end
 
+  def my_vacancies
+    if current_user.nil?
+      redirect_to root_path unless current_user
+    else
+      @my_vacancies = current_user.vacancies
+    end
+  end
+
   private
 
   def vacancy_params

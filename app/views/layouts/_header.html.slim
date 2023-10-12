@@ -8,6 +8,11 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
           = link_to "Home", root_path, class: "nav-link fs-4 text-black"
+        li.nav-item
+          = link_to "Vacancies", vacancies_path, class: "nav-link fs-4 text-black"
+        - unless current_user.nil?
+          li.nav-item
+            = link_to "My Vacancies", my_vacancies_vacancies_path, class: "nav-link fs-4 text-black"
       ul.navbar-nav.ms-3
         li.nav-item.dropdown
           - if user_signed_in?
