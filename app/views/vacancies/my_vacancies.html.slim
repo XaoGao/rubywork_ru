@@ -4,10 +4,4 @@
       = button_to "New vacancy", new_vacancy_path, method: :get, class: "btn btn-primary mx-2"
 .row.row-cols-1.row-cols-md-2.row-cols-xl-4.g-4.mx-20.mt-0
   - @my_vacancies.each do |vacancy|
-    .col.d-flex.align-items-stretch
-      .card.w-100
-        .card-body.d-flex.flex-column
-          h5.card-title
-            = link_to vacancy.title, vacancy_path(vacancy)
-          p.card-text
-            = truncate(vacancy.body, length: 100)
+    = render partial: "vacancy", locals: { vacancy: vacancy }

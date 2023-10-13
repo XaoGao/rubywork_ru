@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
           = link_to "Home", root_path, class: "nav-link fs-4 text-black"
         li.nav-item
           = link_to "Vacancies", vacancies_path, class: "nav-link fs-4 text-black"
-        - unless current_user.nil?
+        - if user_signed_in?
           li.nav-item
             = link_to "My Vacancies", my_vacancies_vacancies_path, class: "nav-link fs-4 text-black"
       ul.navbar-nav.ms-3

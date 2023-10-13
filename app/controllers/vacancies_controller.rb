@@ -1,4 +1,6 @@
 class VacanciesController < ApplicationController
+  before_action :authenticate_user!, only: %i[my_vacancies]
+
   def index
     @vacancies = Vacancy.all
   end
@@ -48,11 +50,7 @@ class VacanciesController < ApplicationController
   end
 
   def my_vacancies
-    if current_user.nil?
-      redirect_to root_path unless current_user
-    else
-      @my_vacancies = current_user.vacancies
-    end
+    @my_vacancies = current_user.vacancies
   end
 
   private
