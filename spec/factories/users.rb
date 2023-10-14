@@ -30,4 +30,8 @@ FactoryBot.define do
   trait :skip_admin_role do
     role { User.roles.keys.reject { |key| key == "admin" }.sample }
   end
+
+  trait :individual do
+    role { %w[applicant moderator admin].sample }
+  end
 end
