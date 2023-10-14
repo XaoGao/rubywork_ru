@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root "pages#welcome"
   resources :resumes
-  resources :vacancies
+  resources :vacancies do
+    get :my_vacancies, on: :collection
+  end
 end

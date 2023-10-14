@@ -4,14 +4,14 @@ RSpec.describe "Vacancies", type: :request do
   let(:user)    { build(:user) }
   let(:vacancy) { build(:vacancy) }
 
-  describe "#index" do
+  describe "GET /vacancies" do
     it "http status success" do
       get vacancies_path
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "#new" do
+  describe "GET /vacancies/new" do
     before { sign_in user }
 
     it "http status success" do
@@ -30,7 +30,7 @@ RSpec.describe "Vacancies", type: :request do
     end
   end
 
-  describe "#create" do
+  describe "POST /vacancies/create" do
     before { sign_in user }
 
     context "when valid params" do
@@ -45,7 +45,7 @@ RSpec.describe "Vacancies", type: :request do
     end
   end
 
-  describe "#edit" do
+  describe "GET /vacancies/edit" do
     let(:vacancy) { create(:vacancy) }
 
     before { sign_in vacancy.user }
@@ -56,18 +56,18 @@ RSpec.describe "Vacancies", type: :request do
     end
   end
 
-  describe "#update" do
+  describe "PUT /vacancies/update" do
     let(:vacancy) { create(:vacancy) }
 
     before { sign_in vacancy.user }
 
     it "http_status success" do
-      patch vacancy_path(vacancy), params: { vacancy: vacancy.attributes }
+      put vacancy_path(vacancy), params: { vacancy: vacancy.attributes }
       expect(response).to redirect_to(vacancy_path(vacancy))
     end
   end
 
-  describe "#destroy" do
+  describe "DELETE /vacancies/destroy" do
     let(:vacancy) { create(:vacancy) }
 
     before { sign_in vacancy.user }

@@ -20,5 +20,9 @@ module RubyworkRu
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.generators.test_framework = :rspec
+
+    # i18n
+    config.i18n.available_locales = %i[en ru]
+    config.i18n.default_locale = :en
   end
 end

@@ -12,9 +12,13 @@
 #  updated_at             :datetime         not null
 #  role                   :integer          default("applicant")
 #  name                   :string
+#  locale                 :string           default("en")
 #
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "defines by default english" do
+    user = build(:user)
+    expect(user.locale).to eq("en")
+  end
 end

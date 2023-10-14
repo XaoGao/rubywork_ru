@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_30_045201) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_12_080842) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_045201) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "browses", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "vacancy_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_browses_on_user_id"
+    t.index ["vacancy_id"], name: "index_browses_on_vacancy_id"
+  end
+
   create_table "contact_types", force: :cascade do |t|
     t.string "name", null: false
     t.string "icon", null: false
@@ -65,16 +74,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_045201) do
     t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
-  create_table "place_of_works", force: :cascade do |t|
-    t.datetime "started_at", null: false
-    t.datetime "ended_at"
-    t.string "company", null: false
-    t.integer "resume_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["resume_id"], name: "index_place_of_works_on_resume_id"
-  end
-
   create_table "notifications", force: :cascade do |t|
     t.integer "sender_id", null: false
     t.integer "recipient_id", null: false
@@ -86,11 +85,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_045201) do
     t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
+  create_table "place_of_works", force: :cascade do |t|
+    t.datetime "started_at", null: false
+    t.datetime "ended_at"
+    t.string "company", null: false
+    t.integer "resume_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["resume_id"], name: "index_place_of_works_on_resume_id"
+  end
+
   create_table "resumes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
+    t.string "name", default: "", null: false
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
 
@@ -104,6 +114,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_045201) do
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
     t.string "name"
+    t.string "locale", default: "en"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -114,16 +125,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_30_045201) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "browses_count", default: 0
     t.index ["user_id"], name: "index_vacancies_on_user_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "browses", "users"
+  add_foreign_key "browses", "vacancies"
   add_foreign_key "contacts", "contact_types"
   add_foreign_key "contacts", "users"
-  add_foreign_key "place_of_works", "resumes"
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "notifications", "users", column: "sender_id"
+  add_foreign_key "place_of_works", "resumes"
   add_foreign_key "resumes", "users"
   add_foreign_key "vacancies", "users"
 end
