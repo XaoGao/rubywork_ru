@@ -3,5 +3,5 @@
     .col.text-center.d-flex.justify-content-center
       = button_to "New vacancy", new_vacancy_path, method: :get, class: "btn btn-primary mx-2"
 .row.row-cols-1.row-cols-md-2.row-cols-xl-4.g-4.mx-20.mt-0
-  - @vacancies.each do |vacancy|
+  - @my_vacancies.each do |vacancy|
     = render partial: "vacancy", locals: { vacancy: vacancy }

@@ -1,4 +1,6 @@
 class VacanciesController < ApplicationController
+  before_action :authenticate_user!, only: %i[my_vacancies]
+
   def index
     @vacancies = Vacancy.all
   end
@@ -45,6 +47,10 @@ class VacanciesController < ApplicationController
 
     @vacancy.destroy
     redirect_to vacancies_path
+  end
+
+  def my_vacancies
+    @my_vacancies = current_user.vacancies
   end
 
   private
