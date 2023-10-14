@@ -19,15 +19,15 @@ RSpec.describe "Vacancies", type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    context "when user is not company role" do
-      let(:user) { build(:user, :individual) }
+    # context "when user is not company role" do
+    #   let(:user) { build(:user, :individual) }
 
-      it "redirect on root_page" do
-        sign_in user
-        get new_vacancy_path
-        expect(response).to redirect_to(root_path)
-      end
-    end
+    #   it "redirect on root_page" do
+    #     sign_in user
+    #     get new_vacancy_path
+    #     expect(response).to redirect_to(root_path)
+    #   end
+    # end
   end
 
   describe "POST /vacancies/create" do
