@@ -16,7 +16,7 @@ class ResumesController < ApplicationController
     if @resume.save?
       redirect_to @resume, notice: t(".created")
     else
-      render :new, alert: resume.errors.full_messages.join(' ')
+      render :new, alert: resume.errors.full_messages.join(" ")
     end
   end
 
@@ -25,7 +25,7 @@ class ResumesController < ApplicationController
     if @resume.update(resume_params)
       redirect_to @resume, notice: t(".updated")
     else
-      render :edit, alert: @resume.errors.full_messages.join(' ')
+      render :edit, alert: @resume.errors.full_messages.join(" ")
     end
   end
 
