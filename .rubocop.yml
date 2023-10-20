@@ -17,7 +17,8 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/StringLiterals:
-  Enabled: false
+  Enabled: true
+  EnforcedStyle: double_quotes
 
 Rails/FilePath:
   EnforcedStyle: arguments
