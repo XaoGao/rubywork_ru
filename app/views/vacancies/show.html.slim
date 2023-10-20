@@ -1,5 +1,8 @@
 .container.d-flex.flex-column.align-items-center
   h1 = @vacancy.title
+  - if user_signed_in? && current_user.id == @vacancy.user_id
+    span.badge.bg-secondary
+      = "Views: #{@vacancy.browses_count}"
   p.text-break = @vacancy.body
 
 .container
