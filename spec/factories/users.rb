@@ -34,7 +34,7 @@ FactoryBot.define do
   trait :company do
     role { "company" }
   end
-  
+
   trait :individual do
     role { %w[applicant moderator admin].sample }
   end
