@@ -17,7 +17,8 @@
 #
 FactoryBot.define do
   factory :resume do
+    name { Faker::Lorem.sentence(word_count: 3) }
     description { nil }
-    user { nil }
+    user
   end
 end
