@@ -21,4 +21,19 @@ RSpec.describe User, type: :model do
     user = build(:user)
     expect(user.locale).to eq("en")
   end
+
+  describe "#owner?" do
+    let(:user) { create(:user) }
+    let(:vacancy) { create(:vacancy, user_id: user.id) }
+
+    it "returns true when user is the owner of the vacancy" do
+      expect(user).to be_owner(vacancy)
+    end
+
+    it "returns false when user is not the owner of the vacancy" do
+      other_user = create(:user)
+
+      expect(other_user).not_to be_owner(vacancy)
+    end
+  end
 end
