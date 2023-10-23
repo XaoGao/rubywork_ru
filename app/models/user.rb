@@ -30,4 +30,8 @@ class User < ApplicationRecord
   enum :role, %i[applicant company moderator admin]
 
   validates :locale, presence: true
+
+  def owner?(vacancy)
+    self.id == vacancy.user_id
+  end
 end
