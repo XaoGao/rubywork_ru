@@ -32,6 +32,6 @@ class User < ApplicationRecord
   validates :locale, presence: true
 
   def owner?(vacancy)
-    self.id == vacancy.user_id
+    id == vacancy.user_id
   end
 end
