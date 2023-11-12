@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def owner?(vacancy)
     id == vacancy.user_id
   end
+
+  def self.roles_without_privelegies
+    roles.except(:moderator, :admin)
+  end
 end

@@ -23,6 +23,10 @@ h2 Sign up
   .mb-3
     = f.label :password_confirmation, class: "form-label"
     = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"
+  
+  .mb-3
+    = f.label :role, class: "form-label"
+    = select_tag :role, options_for_select(User.roles_without_privelegies), class: "form-select"
 
   .mb-1
     = f.submit "Sign up", class: "btn btn-primary"
