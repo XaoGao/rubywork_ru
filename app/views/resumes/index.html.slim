@@ -1,0 +1,9 @@
+.container
+  .row
+    .col.text-center.d-flex.justify-content-center
+      = button_to "New resume", new_resume_path, method: :get, class: "btn btn-primary mx-2"
+.row.row-cols-1.row-cols-md-2.row-cols-xl-4.g-4.mx-20.mt-0
+  - @resumes.each do |resume|
+    = render partial: "resume", locals: { resume: resume }
+
+= paginate @resumes
