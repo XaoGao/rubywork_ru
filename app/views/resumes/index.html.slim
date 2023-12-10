@@ -6,4 +6,7 @@
   - @resumes.each do |resume|
     = render partial: "resume", locals: { resume: resume }
 
-= paginate @resumes
+.container
+  .row
+    .col.text-center.d-flex.justify-content-center.mt-3
+      = paginate @resumes
