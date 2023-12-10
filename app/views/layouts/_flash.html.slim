@@ -1,0 +1,2 @@
+- flash.each do |key, message|
+  = content_tag :p, message.html_safe, class: flash_message_css_class(key)
