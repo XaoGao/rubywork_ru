@@ -1,0 +1,8 @@
+- if @resume.errors.any?
+  .
+    h2 Errors
+    ul
+      - @resume.errors.each do |error|
+        li = error.full_message
+
+= render partial: "form", locals: { resume: @resume, text: "New resume" }

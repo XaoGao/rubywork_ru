@@ -1,0 +1,10 @@
+= form_with(model: resume, data: { turbo: false }, class: "form-width-avg") do |form|
+  .form-group.row.mb-15
+    = form.label :name
+    = form.text_field :name, class: "form-control"
+  .form-group.row.mb-15
+    = form.label :description
+    = form.rich_text_area :description, class: "form-control"
+  = form.hidden_field :user_id, value: current_user.id
+  .form-group.mt-10
+    = form.submit text, class: "btn btn-outline-success"

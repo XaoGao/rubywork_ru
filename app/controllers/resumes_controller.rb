@@ -1,10 +1,17 @@
 class ResumesController < ApplicationController
+  before_action :authenticate_user!, only: %i[new]
+
+  def index
+    @resumes = Resume.all
+  end
+
   def show
     @resume = Resume.find(params[:id])
   end
 
   def new
     @resume = Resume.new
+    authorize! @resume, with: ResumePolicy
   end
 
   def edit
@@ -13,7 +20,7 @@ class ResumesController < ApplicationController
 
   def create
     @resume = current_user.resumes.build(resume_params)
-    if @resume.save?
+    if @resume.save
       redirect_to @resume, notice: t(".created")
     else
       render :new, alert: resume.errors.full_messages.join(" ")
@@ -38,6 +45,6 @@ class ResumesController < ApplicationController
   private
 
   def resume_params
-    params.require(:resume).permit(:description)
+    params.require(:resume).permit(:name, :description, :user_id)
   end
 end

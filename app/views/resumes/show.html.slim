@@ -1,0 +1,11 @@
+.container.d-flex.flex-column.align-items-center
+  h1 = @resume.name
+  p.text-break = @resume.description
+
+.container
+  .row
+    .col.text-center.d-flex.justify-content-center
+      = button_to "Back", resumes_path, method: :get, class: "btn btn-success mx-2"
+      - if current_user.id == @resume.user_id
+        = button_to "Edit", edit_resume_path, method: :get, class: "btn btn-primary mx-2"
+        = button_to "Delete", resume_path(@resume), method: :delete, data: { "turbo-confirm": "Are you sure you want to delete this resume?" }, class: "btn btn-danger mx-2"
