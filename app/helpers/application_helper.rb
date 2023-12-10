@@ -6,11 +6,9 @@ module ApplicationHelper
   end
 
   def flash_message_css_class(flash_type)
-    case flash_type
-    when "notice" then "alert alert-info"
-    when "success" then "alert alert-success"
-    when "error" then "alert alert-danger"
-    when "alert" then "alert alert-warning"
-    end
+    { notice: "alert alert-info",
+      success: "alert alert-success",
+      error: "alert alert-danger",
+      alert: "alert alert-warning" }[flash_type.to_sym] || "alert-info"
   end
 end

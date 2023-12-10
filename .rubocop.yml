@@ -20,9 +20,6 @@ Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
 
-Style/HashLikeCase:
-  Enabled: false
-
 Rails/FilePath:
   EnforcedStyle: arguments
 
