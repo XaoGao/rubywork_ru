@@ -2,7 +2,7 @@ class ResumesController < ApplicationController
   before_action :authenticate_user!, only: %i[new]
 
   def index
-    @resumes = Resume.all
+    @resumes = Resume.page(params[:page]).per(15)
   end
 
   def show
