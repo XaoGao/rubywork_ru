@@ -1,5 +1,5 @@
 module ResumeHelper
-  def get_user_name(resume)
-    User.find(resume.user_id).name
+  def show_user_name(resume)
+    resume.user.name
   end
 end
