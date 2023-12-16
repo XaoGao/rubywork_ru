@@ -8,7 +8,7 @@
 #  user_id       :integer          not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
-#  browses_count :integer
+#  browses_count :integer          default(0)
 #
 FactoryBot.define do
   factory :vacancy do
