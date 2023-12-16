@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  user_id      :integer          not null
-#  vacancies_id :integer          not null
+#  vacancy_id   :integer          not null
 #  readed_at    :datetime
 #  cover_letter :text
 #  created_at   :datetime         not null

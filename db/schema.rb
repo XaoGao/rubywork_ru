@@ -97,13 +97,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_193015) do
 
   create_table "reactions", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "vacancies_id", null: false
+    t.integer "vacancy_id", null: false
     t.datetime "readed_at"
     t.text "cover_letter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reactions_on_user_id"
-    t.index ["vacancies_id"], name: "index_reactions_on_vacancies_id"
+    t.index ["vacancy_id"], name: "index_reactions_on_vacancy_id"
   end
 
   create_table "resumes", force: :cascade do |t|
@@ -150,7 +150,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_13_193015) do
   add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "place_of_works", "resumes"
   add_foreign_key "reactions", "users"
-  add_foreign_key "reactions", "vacancies", column: "vacancies_id"
+  add_foreign_key "reactions", "vacancies"
   add_foreign_key "resumes", "users"
   add_foreign_key "vacancies", "users"
 end
