@@ -14,4 +14,5 @@ class Vacancy < ApplicationRecord
   belongs_to :user
 
   has_many :browses, dependent: :destroy
+  has_many :reactions, dependent: :destroy
 end
