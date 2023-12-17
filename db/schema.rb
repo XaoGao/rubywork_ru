@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_12_080842) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_13_193015) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -24,8 +24,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_080842) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_080842) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -95,6 +95,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_080842) do
     t.index ["resume_id"], name: "index_place_of_works_on_resume_id"
   end
 
+  create_table "reactions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "vacancy_id", null: false
+    t.datetime "readed_at"
+    t.text "cover_letter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_reactions_on_user_id"
+    t.index ["vacancy_id"], name: "index_reactions_on_vacancy_id"
+  end
+
   create_table "resumes", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -138,6 +149,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_12_080842) do
   add_foreign_key "notifications", "users", column: "recipient_id"
   add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "place_of_works", "resumes"
+  add_foreign_key "reactions", "users"
+  add_foreign_key "reactions", "vacancies"
   add_foreign_key "resumes", "users"
   add_foreign_key "vacancies", "users"
 end
