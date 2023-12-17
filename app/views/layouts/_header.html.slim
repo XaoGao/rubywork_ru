@@ -13,7 +13,18 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
         - if user_signed_in?
           li.nav-item
             = link_to "My Vacancies", my_vacancies_vacancies_path, class: "nav-link fs-4 text-black"
-      ul.navbar-nav.ms-3
+      ul.navbar-nav.ms-3.gap-2
+        li.nav-item.dropdown[data-turbo="false"]
+          = link_to selected_language_name, "#", class: "dropdown-toggle btn btn-outline-primary border-0", id: 'languageDropdown', role: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"  
+          .dropdown-menu[aria-labelledby="languageDropdown"]
+            = link_to switch_locale_path(locale: :ru), class: "dropdown-item d-flex align-items-center #{'disabled' if I18n.locale == :ru}" do
+              = image_tag "icons/ru.svg", width: 20, height: 20, class: "me-2 #{'opacity-50' if I18n.locale == :ru}"
+              = ru_language_item
+            .li.hr.dropdown-divider
+            = link_to switch_locale_path(locale: :en), class: "dropdown-item d-flex align-items-center #{'disabled' if I18n.locale == :en}" do
+              = image_tag "icons/us.svg", width: 20, height: 20, class: "me-2 #{'opacity-50' if I18n.locale == :en}"
+              = en_language_item
+          
         li.nav-item.dropdown
           - if user_signed_in?
             = link_to current_user.name? ? current_user.name : current_user.email, "#", class: "dropdown-toggle btn btn-outline-primary", id: "navbarDropdown", role: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"
