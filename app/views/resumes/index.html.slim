@@ -5,7 +5,5 @@
 .row.row-cols-1.row-cols-md-2.row-cols-xl-4.g-4.mx-20.mt-0
   = render @resumes
 
-.container
-  .row
-    .col.text-center.d-flex.justify-content-center.mt-3
-      = paginate @resumes
+= render "shared/pagination", items: @resumes
+
