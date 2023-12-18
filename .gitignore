@@ -39,3 +39,4 @@
 
 # Ignore the environment variables
 .env
+.idea
