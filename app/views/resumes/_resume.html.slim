@@ -1,0 +1,9 @@
+.col.d-flex.align-items-stretch
+  .card.w-100
+    .card-body.d-flex.flex-column
+      h5.card-title
+        = resume.user.name
+      p.card-text
+        = truncate(resume.name, length: 100)
+      = link_to "Show resume", resume_path(resume), class: "btn btn-primary"
+
