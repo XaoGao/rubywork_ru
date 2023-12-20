@@ -7,7 +7,7 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
     #navbarSupportedContent.collapse.navbar-collapse
       ul.navbar-nav.me-auto.mb-2.mb-lg-0
         li.nav-item
-          = link_to "Home", root_path, class: "nav-link fs-4 text-black"
+          = link_to "Home", home_link, class: "nav-link fs-4 text-black"
         li.nav-item
           = link_to "Vacancies", vacancies_path, class: "nav-link fs-4 text-black"
         - if user_signed_in?

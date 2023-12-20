@@ -5,6 +5,10 @@ module ApplicationHelper
     end
   end
 
+  def home_link
+    root_path unless user_signed_in?
+  end
+
   def flash_message_css_class(flash_type)
     { notice: "alert alert-info",
       success: "alert alert-success",
