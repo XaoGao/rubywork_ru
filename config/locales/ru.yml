@@ -269,3 +269,6 @@ ru:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: вечера
+  navbar:
+    language: Смена языка
+

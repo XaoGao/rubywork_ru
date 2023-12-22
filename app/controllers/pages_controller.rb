@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   def welcome; end
 
   def switch_locale
-    params_locale = params[:locale].to_sym 
-    locale = I18n.available_locales.include?(params_locale) ? params_locale : default_locale 
+    params_locale = params[:locale].to_sym
+    locale = I18n.available_locales.include?(params_locale) ? params_locale : default_locale
     I18n.locale = locale
     store_locale
 
