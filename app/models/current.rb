@@ -1,3 +1,3 @@
 class Current < ActiveSupport::CurrentAttributes
-  attribute :locale
+  thread_mattr_accessor :locale
 end
