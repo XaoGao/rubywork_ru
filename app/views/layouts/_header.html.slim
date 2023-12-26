@@ -13,14 +13,18 @@ nav.navbar.navbar-expand-lg.bg-body-tertiary
         - if user_signed_in?
           li.nav-item
             = link_to "My Vacancies", my_vacancies_vacancies_path, class: "nav-link fs-4 text-black"
-      ul.navbar-nav.ms-3.gap-2
+      ul.navbar-nav.ms-3.gap-1
         li.nav-item[data-turbo="false"]
           = link_to switch_locale_path(locale: next_locale), class: "btn btn-outline-primary border-0 me-2" do
             = selected_language_icon
         
         li.nav-item.dropdown
           - if user_signed_in?
-            = link_to current_user.name? ? current_user.name : current_user.email, "#", class: "dropdown-toggle btn btn-outline-primary", id: "navbarDropdown", role: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"
+            = link_to "javascript:void(0);", 
+            class: "dropdown-toggle btn btn-outline-primary", id: "navbarDropdown", role: "button", 
+            "data-bs-toggle" => "dropdown", "aria-expanded" => "false" do
+              span.ms-1.me-2 
+                = current_user.display_name
             .dropdown-menu[aria-labelledby="navbarDropdown"]
               = link_to "Edit profile", edit_user_registration_path, class: "dropdown-item"
               .li.hr.dropdown-divider
