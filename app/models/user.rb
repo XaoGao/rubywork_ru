@@ -30,10 +30,29 @@ class User < ApplicationRecord
                                     foreign_key: :recipient_id, dependent: :destroy, inverse_of: :recipient
 
   enum :role, %i[applicant company moderator admin]
+  # Нежелательное использование колбека в модели, но это врменное решение до определения логики devise
+  before_validation :set_name, if: -> { name.blank? }, on: :create
 
   validates :locale, presence: true
 
   def owner?(vacancy)
     id == vacancy.user_id
+  end
+
+  def display_name
+    name || name_from_email
+  end
+
+  private
+
+  def set_name
+    self.name = name_from_email
+  end
+
+  def name_from_email
+    name_part = email.split("@").first
+    return name_part if [".", "_", "-"].include?(name_part[1])
+
+    name_part.humanize
   end
 end
