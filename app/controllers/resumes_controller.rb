@@ -23,7 +23,7 @@ class ResumesController < ApplicationController
     if @resume.save
       redirect_to @resume, notice: t(".created")
     else
-      render :new, alert: resume.errors.full_messages.join(" ")
+      render :new, alert: @resume.errors.full_messages.join(" ")
     end
   end
 
